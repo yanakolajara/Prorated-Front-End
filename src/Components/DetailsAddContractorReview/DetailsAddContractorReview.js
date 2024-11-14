@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { ContractorsContext } from "../../context/ContractorsContext";
-import { UsersContext } from "../../context/UsersContext";
-import axios from "../../Api/axios";
-import { MdOutlineLocationOn } from "react-icons/md";
-import { MdStarBorder } from "react-icons/md";
-import { TbTools } from "react-icons/tb";
-import StarHoverRating from "../StarHoverRating/StarHoverRating";
-import { getSingleUser } from "../../Api/usersAPI";
-import PhotoDragDrop from "../../Components/PhotoDragDrop/PhotoDragDrop";
+import React, { useState, useEffect, useContext } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { ContractorsContext } from '../../context/ContractorsContext';
+import { UsersContext } from '../../context/UsersContext';
+import axios from '../../Api/axios';
+import { MdOutlineLocationOn } from 'react-icons/md';
+import { MdStarBorder } from 'react-icons/md';
+import { TbTools } from 'react-icons/tb';
+import StarHoverRating from '../StarHoverRating/StarHoverRating';
+import { getSingleUser } from '../../Api/usersAPI';
+import PhotoDragDrop from '../../Components/PhotoDragDrop/PhotoDragDrop';
 
-import "./DetailsAddContractorReview.scss";
+import './DetailsAddContractorReview.scss';
 
 function DetailsAddContractorReview() {
   const { id } = useParams();
@@ -22,8 +22,8 @@ function DetailsAddContractorReview() {
   if (userData) {
     name = userData.username;
   }
-  const [reviewText, setReviewText] = useState("");
-  const [rating, setRating] = useState("");
+  const [reviewText, setReviewText] = useState('');
+  const [rating, setRating] = useState('');
 
   let navigate = useNavigate();
   console.log(name);
@@ -64,30 +64,30 @@ function DetailsAddContractorReview() {
   };
 
   return (
-    <div className="add_review_section">
-      <div className="add_review_section__header">
-        <div className="add_review_section__header__image">
+    <div className='add_review_section'>
+      <div className='add_review_section__header'>
+        <div className='add_review_section__header__image'>
           <img
-            alt="#"
-            src="https://i.pinimg.com/originals/ec/9b/4b/ec9b4bcd102e2db3050bc2f3b1eecc20.jpg"
+            alt='#'
+            src='https://i.pinimg.com/originals/ec/9b/4b/ec9b4bcd102e2db3050bc2f3b1eecc20.jpg'
           />
         </div>
-        <div className="add_review_section__header__info">
-          <div className="add_review_section__header__info__name">
+        <div className='add_review_section__header__info'>
+          <div className='add_review_section__header__info__name'>
             {/* {userData.first_name} {userData.last_name} */} {name}
           </div>
 
-          <div className="add_review_section__header__info__items">
-            <div className="add_review_section__header__info__items__icon">
+          <div className='add_review_section__header__info__items'>
+            <div className='add_review_section__header__info__items__icon'>
               <MdOutlineLocationOn />
             </div>
             <div>Brooklyn</div>
 
-            <div className="add_review_section__header__info__items__info_line">
+            <div className='add_review_section__header__info__items__info_line'>
               |
             </div>
 
-            <div className="add_review_section__header__info__items__icon">
+            <div className='add_review_section__header__info__items__icon'>
               <MdStarBorder />
             </div>
 
@@ -95,10 +95,10 @@ function DetailsAddContractorReview() {
               <strong>1</strong> Review
             </p>
 
-            <div className="add_review_section__header__info__items__info_line">
+            <div className='add_review_section__header__info__items__info_line'>
               |
             </div>
-            <div className="add_review_section__header__info__items__icon">
+            <div className='add_review_section__header__info__items__icon'>
               <TbTools />
             </div>
             <p>
@@ -107,33 +107,33 @@ function DetailsAddContractorReview() {
           </div>
         </div>
       </div>
-      <form className="add_review_section__review_input_section">
-        <div className="add_review_section__review_input_section__date">
+      <form className='add_review_section__review_input_section'>
+        <div className='add_review_section__review_input_section__date'>
           <h4>DATE OF WORK</h4>
-          <input type="date" />
+          <input type='date' />
         </div>
-        <div className="add_review_section__review_input_section__rating">
+        <div className='add_review_section__review_input_section__rating'>
           <h4>RATING</h4>
-          <div className="add_review_section__review_input_section__rating__stars">
+          <div className='add_review_section__review_input_section__rating__stars'>
             <StarHoverRating rating={rating} setRating={setRating} />
           </div>
         </div>
-        <div className="add_review_section__review_input_section__photo_file">
+        <div className='add_review_section__review_input_section__photo_file'>
           <h4>UPLOAD PHOTOS</h4>
 
           {/* <input type="file" /> */}
           {<PhotoDragDrop />}
         </div>
-        <div className="add_review_section__review_input_section__review">
+        <div className='add_review_section__review_input_section__review'>
           <h4>REVIEW</h4>
           <textarea
             value={reviewText}
             onChange={(e) => setReviewText(e.target.value)}
-            id="review"
+            id='review'
           ></textarea>
         </div>
-        <div className="add_review_section__review_input_section__submit">
-          <button type="submit" onClick={handleSumbitReview}>
+        <div className='add_review_section__review_input_section__submit'>
+          <button type='submit' onClick={handleSumbitReview}>
             Submit
           </button>
         </div>

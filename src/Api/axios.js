@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
 
 //TODO: Restore original file (base url)
 const AxiosInstance = axios.create({
-  baseURL: 3001,
+  baseURL: process.env.REACT_APP_API_URL,
   timeout: 50000,
 });
 
