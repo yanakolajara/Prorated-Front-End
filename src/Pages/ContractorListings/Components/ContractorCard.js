@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import "./ContractorCard.scss";
-import StarRating from "../../../Components/StarRating/StarRating";
-import { motion } from "framer-motion";
-import { getContractorReviews } from "../../../Api/Api";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import './ContractorCard.scss';
+import StarRating from '../../../Components/StarRating/StarRating';
+import { motion } from 'framer-motion';
+import { getContractorReviews } from '../../../Api/Api';
 
 function ContractorCard({ contractor }) {
   const [loading, setLoading] = useState(true);
@@ -26,11 +26,13 @@ function ContractorCard({ contractor }) {
   };
 
   useEffect(() => {
-    getReviews();
-  }, []);
+    if (loading) {
+      getReviews();
+    }
+  }, [getReviews, loading]);
 
   return loading ? (
-    <div className="loader"></div>
+    <div className='loader'></div>
   ) : (
     <motion.div
       layout
@@ -38,44 +40,44 @@ function ContractorCard({ contractor }) {
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
       // transition={{ duration: 1 }}
-      className="contractor-card"
+      className='contractor-card'
     >
       {console.log(reviews)}
       <Link
         to={`/profile/${contractor.id}`}
         key={contractor.id}
-        style={{ textDecoration: "none" }}
-        className="profile-card"
+        style={{ textDecoration: 'none' }}
+        className='profile-card'
       >
-        <div className="profile-split">
-          <div className="image">
-            <img className="profile-img" alt="#" src={contractor.logo} />
+        <div className='profile-split'>
+          <div className='image'>
+            <img className='profile-img' alt='#' src={contractor.logo} />
           </div>
-          <div className="card-content">
-            <div className="text-data">
-              <span className="name">{contractor.name}</span>
+          <div className='card-content'>
+            <div className='text-data'>
+              <span className='name'>{contractor.name}</span>
             </div>
 
-            <div className="ratings">
-              <div style={{ display: "flex", alignItems: "center" }}>
+            <div className='ratings'>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
                 <StarRating rating={getRatingAverage(reviews)} />
                 <span
-                  style={{ fontSize: "small", color: "black" }}
-                  className="count-span"
+                  style={{ fontSize: 'small', color: 'black' }}
+                  className='count-span'
                 >
-                  {reviews.length ? ` (${reviews.length})` : " (0)"}
+                  {reviews.length ? ` (${reviews.length})` : ' (0)'}
                 </span>
               </div>
             </div>
-            <div className="hires">
+            <div className='hires'>
               <span>
-                <i className="bx bx-trophy"></i>
+                <i className='bx bx-trophy'></i>
                 <small> {randomNumber} hires on ProRated</small>
               </span>
               <span>
-                <i className="bx bx-been-here"></i>
+                <i className='bx bx-been-here'></i>
                 <small>
-                  <span className="bold">
+                  <span className='bold'>
                     Area: <span>{contractor.location}</span>
                   </span>
                 </small>
@@ -84,16 +86,16 @@ function ContractorCard({ contractor }) {
           </div>
         </div>
 
-        <div className="card-side">
-          <div className="contact">
+        <div className='card-side'>
+          <div className='contact'>
             <span>
-              <i className="bx bx-message-rounded"></i>
+              <i className='bx bx-message-rounded'></i>
             </span>
             <span>
               <small> Contact For Price</small>
             </span>
           </div>
-          <button className="more-details">More Details</button>
+          <button className='more-details'>More Details</button>
         </div>
       </Link>
     </motion.div>

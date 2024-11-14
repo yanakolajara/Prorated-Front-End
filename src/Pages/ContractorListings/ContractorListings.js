@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import "./ContractorListings.css";
-import ContractorCard from "./Components/ContractorCard";
-import { motion, AnimatePresence } from "framer-motion";
-import { getServicesResults } from "../../Api/Api";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import './ContractorListings.css';
+import ContractorCard from './Components/ContractorCard';
+import { motion, AnimatePresence } from 'framer-motion';
+import { getServicesResults } from '../../Api/Api';
+import { useParams } from 'react-router-dom';
 
 function ContractorListings(props) {
   const [loading, setLoading] = useState(true);
@@ -22,22 +22,24 @@ function ContractorListings(props) {
   };
 
   useEffect(() => {
-    fetchResults();
-  }, []);
+    if (loading) {
+      fetchResults();
+    }
+  }, [fetchResults, loading]);
 
   if (loading) {
     return <p>Loading...</p>;
   }
 
   return (
-    <div className="container contractor-listings-route">
-      <div className="main">
-        <div className="main-header">
-          <div className="left-main">
+    <div className='container contractor-listings-route'>
+      <div className='main'>
+        <div className='main-header'>
+          <div className='left-main'>
             <h2>
-              <span className="results-for">Results For</span>
-              <span className="service-found" style={{ color: "#5271ff" }}>
-                {" "}
+              <span className='results-for'>Results For</span>
+              <span className='service-found' style={{ color: '#5271ff' }}>
+                {' '}
                 {q}
               </span>
             </h2>
@@ -52,7 +54,7 @@ function ContractorListings(props) {
           /> */}
         </div>
 
-        <motion.div layout className="main-content">
+        <motion.div layout className='main-content'>
           <AnimatePresence>
             {dataObj.map((contractor) => {
               return (

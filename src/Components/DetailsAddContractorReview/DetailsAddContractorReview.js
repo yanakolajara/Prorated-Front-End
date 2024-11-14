@@ -7,15 +7,15 @@ import { MdOutlineLocationOn } from 'react-icons/md';
 import { MdStarBorder } from 'react-icons/md';
 import { TbTools } from 'react-icons/tb';
 import StarHoverRating from '../StarHoverRating/StarHoverRating';
-import { getSingleUser } from '../../Api/usersAPI';
+// import { getSingleUser } from '../../Api/usersAPI';
 import PhotoDragDrop from '../../Components/PhotoDragDrop/PhotoDragDrop';
 
 import './DetailsAddContractorReview.scss';
 
 function DetailsAddContractorReview() {
   const { id } = useParams();
-  const { selectedContractor, setSelectedContractor } =
-    useContext(ContractorsContext);
+  // const { selectedContractor, setSelectedContractor } =
+  useContext(ContractorsContext);
   const { userData } = useContext(UsersContext);
 
   let name;
@@ -34,13 +34,16 @@ function DetailsAddContractorReview() {
         const response = await axios.get(`/contractors/${id}`);
 
         console.log(response.data.data);
-        setSelectedContractor(response.data.data);
+        // setSelectedContractor(response.data.data);
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
-  }, [id, setSelectedContractor]);
+  }, [
+    id,
+    // setSelectedContractor
+  ]);
   console.log(userData);
   const handleSumbitReview = async (e) => {
     e.preventDefault();
