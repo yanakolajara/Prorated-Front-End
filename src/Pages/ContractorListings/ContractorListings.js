@@ -21,10 +21,11 @@ function ContractorListings(props) {
         console.log(error);
       }
     };
+
     if (loading) {
       fetchResults();
     }
-  }, [loading]);
+  }, [loading, q]);
 
   if (loading) {
     return <p>Loading...</p>;

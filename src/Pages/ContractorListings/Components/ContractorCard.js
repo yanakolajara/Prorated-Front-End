@@ -26,10 +26,11 @@ function ContractorCard({ contractor }) {
         console.log(error);
       }
     };
+
     if (loading) {
       getReviews();
     }
-  }, [loading]);
+  }, [loading, contractor.id]);
 
   return loading ? (
     <div className='loader'></div>
