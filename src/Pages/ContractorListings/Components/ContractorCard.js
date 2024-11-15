@@ -9,15 +9,6 @@ function ContractorCard({ contractor }) {
   const [loading, setLoading] = useState(true);
   const [reviews, setReviews] = useState();
   const randomNumber = Math.floor(Math.random() * (70 - 65 + 1) + 65);
-  const getReviews = async () => {
-    try {
-      const data = await getContractorReviews(contractor.id);
-      setReviews(data.data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const getRatingAverage = (reviews) => {
     let sum = 0;
@@ -26,10 +17,19 @@ function ContractorCard({ contractor }) {
   };
 
   useEffect(() => {
+    const getReviews = async () => {
+      try {
+        const data = await getContractorReviews(contractor.id);
+        setReviews(data.data);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     if (loading) {
       getReviews();
     }
-  }, [getReviews, loading]);
+  }, [loading]);
 
   return loading ? (
     <div className='loader'></div>

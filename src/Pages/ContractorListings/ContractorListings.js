@@ -11,21 +11,20 @@ function ContractorListings(props) {
 
   const { q } = useParams();
 
-  const fetchResults = async () => {
-    try {
-      const response = await getServicesResults(q);
-      setDataObj(response);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
+    const fetchResults = async () => {
+      try {
+        const response = await getServicesResults(q);
+        setDataObj(response);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     if (loading) {
       fetchResults();
     }
-  }, [fetchResults, loading]);
+  }, [loading]);
 
   if (loading) {
     return <p>Loading...</p>;
